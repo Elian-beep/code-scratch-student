@@ -1,13 +1,15 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { AppRouter } from './routes';
+import React from 'react';
+import { ThemeProvider } from './ThemeProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <AppRouter />
+    </ThemeProvider>
   </React.StrictMode>
 );
