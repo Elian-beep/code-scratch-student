@@ -1,7 +1,6 @@
-import { useTheme } from '../../ThemeProvider';
+import { useTheme } from 'ThemeProvider';
 import { Button } from './styledButtonTheme';
 import { LightMode, DarkMode } from '@mui/icons-material';
-import { color } from '../../styles/colors';
 
 interface Props {
   colorDark: string;
@@ -14,8 +13,7 @@ export const ButtonTheme: React.FC<Props> = ({colorDark, colorLight}) => {
 
   return (
     <Button colorDark={colorLight} colorLight={colorDark} isDark={isDarkMode} onClick={toggleDarkMode}>
-      {!isDarkMode && <DarkMode/>}
-      {isDarkMode && <LightMode/>}
+      { !isDarkMode ? <DarkMode/> : <LightMode/> }
     </Button>
   )
 }

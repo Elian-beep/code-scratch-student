@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { color } from '../../styles/colors';
-import { PropsMultiColor } from '../../interfaces/IIsDark';
+import { PropsMultiColor } from 'interfaces/IIsDark';
 
 export const Button = styled.button<PropsMultiColor>`
   color: ${(props) => !props.isDark ? props.colorLight : props.colorDark };
@@ -8,4 +7,5 @@ export const Button = styled.button<PropsMultiColor>`
   background: none;
   border: none;
   transition: all .3s ease-in;
+  cursor: pointer;
 `;

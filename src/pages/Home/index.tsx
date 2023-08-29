@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useTheme } from "../../ThemeProvider";
-import { ButtonTheme } from "../../components/ButtonTheme";
+import { useTheme } from "ThemeProvider";
+import { ButtonTheme } from "components/ButtonTheme";
 import { DivContainer } from './styledHome';
-import { color } from "../../styles/colors";
+import { color } from "styles/colors";
 
 export const Home: React.FC = () => {
     const { isDarkMode } = useTheme();
+
+    useEffect(() => {
+        console.log('verificar token');
+    }, []);
 
     return (
         <DivContainer isDark={isDarkMode} >
