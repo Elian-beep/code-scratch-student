@@ -2,8 +2,12 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as LogoScratchSvg } from 'assets/logo/logoCodeScratch.svg';
 import { screens } from "styles/breackpoints";
 
+interface Props {
+    sizeMobile: number;
+    sizeDesktop: number;
+}
 
-export const LogoScratch: React.FC = () => {
+export const LogoScratch: React.FC<Props> = ({ sizeMobile, sizeDesktop }) => {
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -18,8 +22,8 @@ export const LogoScratch: React.FC = () => {
         };
     }, []);
 
-    const widthLogo = windowWidth > screens.desktop ? 200 : 130;
-    const heghtLogo = windowWidth > screens.desktop ? 200 : 130;
+    const widthLogo = windowWidth > screens.desktop ? sizeDesktop : sizeMobile;
+    const heghtLogo = windowWidth > screens.desktop ? sizeDesktop : sizeMobile;
 
     return (
         <LogoScratchSvg height={heghtLogo} width={widthLogo} />

@@ -13,7 +13,7 @@ export const ButtonTheme: React.FC<Props> = ({colorDark, colorLight}) => {
 
   return (
     <Button colorDark={colorLight} colorLight={colorDark} isDark={isDarkMode} onClick={toggleDarkMode}>
-      { !isDarkMode ? <DarkMode/> : <LightMode/> }
+      { !isDarkMode ? <DarkMode fontSize='large' /> : <LightMode fontSize='large' /> }
     </Button>
   )
 }

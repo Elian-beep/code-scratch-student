@@ -7,25 +7,37 @@ import { useState } from "react";
 import { InputNoIcon } from "components/Inputs/InputNoIcon";
 import { InputPass } from "components/Inputs/InputPass";
 import { ButtonSubmit } from "components/Inputs/styledInput";
+import { useNavigate } from "react-router-dom";
+import { authStudent } from "services/endpoints";
 
 export const Login: React.FC = () => {
     const { isDarkMode } = useTheme();
+    const navigate = useNavigate();
 
     const [inputEmail, setInputEmail] = useState('');
     const [inputPassword, setInputPassword] = useState('');
     
-    const handleinputEmailChange = (newText: string) => {
-        setInputEmail(newText);
-    };
+    const handleinputEmailChange = (newText: string) => setInputEmail(newText);
+    const handleinputPasswordChange = (newText: string) => setInputPassword(newText);
 
-    const handleinputPasswordChange = (newText: string) => {
-        setInputPassword(newText);
-    };
-
-    const SubmitAuth = (e: React.FormEvent<HTMLFormElement>) => {
+    const SubmitAuth = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(inputEmail);
-        console.log(inputPassword);
+        
+        try{
+            const { token, student } = await authStudent(inputEmail, inputPassword);
+            localStorage.setItem('token', token);
+            localStorage.setItem('student', student.id);
+            if(!token){
+                navigate("/l")
+            }else{
+                navigate("/");
+            }
+            
+        }catch(error){
+            console.log('Erro no login: ', error);
+        }
+
+
     }
 
     return (
@@ -34,10 +46,10 @@ export const Login: React.FC = () => {
                 <ButtonTheme colorDark={color.dark.black_dark} colorLight={color.pattern.orange} />
             </DivHeader>
             <DivContent>
-                <LogoScratch />
+                <LogoScratch sizeMobile={130} sizeDesktop={200} />
                 <FormLogin onSubmit={SubmitAuth} isDark={isDarkMode}>
-                    <PTitle>Insira seus dados para entrar</PTitle>
-                    <InputNoIcon typeInput="email" textLabel="E-mail" onTextChange={handleinputEmailChange} />
+                    <PTitle isDark={isDarkMode} >Insira seus dados para entrar</PTitle>
+                    <InputNoIcon typeInput="text" textLabel="Usuário" onTextChange={handleinputEmailChange} />
                     <InputPass textLabel="Senha" onTextChange={handleinputPasswordChange} />
                     <ButtonSubmit type="submit">Entrar</ButtonSubmit>
                 </FormLogin>

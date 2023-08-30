@@ -6,6 +6,7 @@ export const Button = styled.button<PropsMultiColor>`
   padding: 0;
   background: none;
   border: none;
+  outline: none;
   transition: all .3s ease-in;
   cursor: pointer;
 `;

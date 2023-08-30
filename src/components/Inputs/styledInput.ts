@@ -4,7 +4,8 @@ import { color } from 'styles/colors';
 
 interface Props {
     hasValue?: string,
-    showPassword?: boolean
+    showPassword?: boolean,
+    isDark?: boolean
 }
 
 export const DivContainer = styled.div`
@@ -26,6 +27,8 @@ export const LabelInput = styled.label<Props>`
     top: 50%;
     transform: translateY(-50%);
     transition: all 0.2s ease-out;
+    color: ${color.pattern.gray_mid};
+    font-weight: 400;
     ${props =>
         props.hasValue && css`
             font-size: 12px;
@@ -38,6 +41,7 @@ export const InputField = styled.input<Props>`
     padding: 12px;
     font-size: 10pt;
     width: 91%;
+    color: ${ props => !props.isDark ? color.dark.black_mid : color.light.white};
     border: none;
     background: none;
     outline: none;

@@ -13,5 +13,6 @@ export const color = {
         red: '#F91E1E',
         blue: '#25AFF4',
         gray_light: '#CECECE',
+        gray_mid: '#8A8A8A'
     }
 }

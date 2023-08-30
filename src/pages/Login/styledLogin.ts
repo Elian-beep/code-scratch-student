@@ -30,16 +30,17 @@ export const DivContent = styled.div`
     }
 `;
 
-export const PTitle = styled.p`
+export const PTitle = styled.p<PropsIsDark>`
     margin: 0;
     padding-bottom: 1em;
     font-weight: 600;
     font-size: 14pt;
+    color: ${ (props) => !props.isDark ? color.dark.black_dark : color.light.white };
 `;
 
 export const FormLogin = styled.form<PropsIsDark>`
     margin: auto 2em;
-    background-color: ${color.light.white};
+    background-color: ${ (props) => !props.isDark ? color.light.white : color.dark.black_lght};
     padding: 40px 24px 48px 24px;
     border-radius: 10px;
     display: flex;
