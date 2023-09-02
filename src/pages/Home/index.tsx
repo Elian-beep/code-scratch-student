@@ -26,17 +26,10 @@ export const Home: React.FC = () => {
     } 
     setToken(storedToken);
   };
-
-  const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('student');
-    navigate('/l');
-  }
   
   return (
     <DivContainer isDark={isDarkMode} >
       <Header />
-      <button onClick={logout}>sair</button>
     </DivContainer>
   );
 }
