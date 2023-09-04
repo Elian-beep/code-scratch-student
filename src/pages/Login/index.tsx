@@ -46,7 +46,7 @@ export const Login: React.FC = () => {
                 <ButtonTheme colorDark={color.dark.black_dark} colorLight={color.pattern.orange} />
             </DivHeader>
             <DivContent>
-                <LogoScratch sizeMobile={130} sizeDesktop={200} />
+                <LogoScratch sizeMobile={110} sizeDesktop={200} />
                 <FormLogin onSubmit={SubmitAuth} isDark={isDarkMode}>
                     <PTitle isDark={isDarkMode} >Insira seus dados para entrar</PTitle>
                     <InputNoIcon typeInput="text" textLabel="Usuário" onTextChange={handleinputEmailChange} />

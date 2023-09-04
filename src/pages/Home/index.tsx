@@ -1,35 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "ThemeProvider";
-import { ButtonTheme } from "components/ButtonTheme";
-import { DivContainer } from './styledHome';
-import { color } from "styles/colors";
-import { useNavigate } from 'react-router-dom';
-import { TClassroom } from "types/TClassroom";
-import { Header } from "components/Header";
+import { Accordion } from "components/Accordion";
+import { useCategory } from "CategoryProvider";
+import { DivAccordion } from "./styledHome";
 
 export const Home: React.FC = () => {
-  
+
   const { isDarkMode } = useTheme();
-  const [token, setToken] = useState<string | null>(null);
-  const [classroons, setClassroons] = useState<TClassroom[]>([]);
-  const navigate = useNavigate();
+  const { categories, addCategories } = useCategory();
 
   useEffect(() => {
-    checkTokenStorage();
-  }, [navigate]);
-  
-  const checkTokenStorage = async () => {
-    const storedToken = await localStorage.getItem('token');
-    if (!storedToken){
-      navigate('/l');
-      return;
-    } 
-    setToken(storedToken);
-  };
-  
+    addCategories();
+  }, []);
+
+  const res = categories;
+
+
   return (
-    <DivContainer isDark={isDarkMode} >
-      <Header />
-    </DivContainer>
+    <DivAccordion>
+      {res.map(item => <Accordion description={item.description} id={item.id} />)}
+    </DivAccordion>
   );
 }

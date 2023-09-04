@@ -30,10 +30,11 @@ export const DivItensContainer = styled.div<Props>`
     &::before{
         content: '';
         position: absolute;
-        top: 6px;
+        top: 7px;
         background: ${color.light.white};
         left: 120%; /* Isso posiciona a ponta no centro do contêiner */
         transform: translateX(-50%);
+        border: transparent;
         border-style: solid;
         border-width: 0 10px 10px; /* Ajuste o tamanho da ponta aqui */
         border-color: 

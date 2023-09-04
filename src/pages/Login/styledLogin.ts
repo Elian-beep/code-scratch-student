@@ -22,7 +22,8 @@ export const DivContent = styled.div`
     align-items: center;
     
     @media (min-width: ${screens.laptopStr}) {
-        gap: 1em;
+        padding-top: 0;
+        gap: 0;
     }
 
     @media (min-width: ${screens.desktopStr}){

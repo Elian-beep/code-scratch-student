@@ -1,20 +1,11 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
-import { UlContainer, LiContent, ButtonItem } from "./styledItens";
 import { useTheme } from "ThemeProvider"
+import { useNavigate } from 'react-router-dom';
+import { LiContent, UlContainer, ButtonItem } from "./styledNavList"
 
-export const Itens: React.FC = () => {
-
+export const NavList: React.FC = () => {
     const { isDarkMode } = useTheme();
-
     const navigate = useNavigate();
 
-    const logout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('student');
-        navigate('/l');
-    }
-    
     const redirectPage = (route: string, id?: string) => {
         if(route === 'l'){
             localStorage.removeItem('token');
@@ -23,19 +14,20 @@ export const Itens: React.FC = () => {
         navigate(`/${route}`);
     }
 
+
     return (
-        <UlContainer isDark={isDarkMode} >
-            <LiContent>
+        <UlContainer>
+            <LiContent >
                 <ButtonItem onClick={() => redirectPage('')} isDark={isDarkMode}>
                     Aulas
                 </ButtonItem>
             </LiContent>
-            <LiContent>
+            <LiContent >
                 <ButtonItem onClick={() => redirectPage('p')} isDark={isDarkMode}>
-                    Meu perfil
+                    Meu Perfil
                 </ButtonItem>
             </LiContent>
-            <LiContent>
+            <LiContent >
                 <ButtonItem onClick={() => redirectPage('l')} isDark={isDarkMode}>
                     Sair
                 </ButtonItem>

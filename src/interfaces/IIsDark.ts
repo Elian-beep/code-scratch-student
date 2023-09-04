@@ -1,5 +1,9 @@
 export interface PropsIsDark {
-    isDark: boolean;
+    isDark?: boolean;
+}
+
+export interface PropsIsOpen extends PropsIsDark{
+    isOpen: boolean;
 }
 
 export interface PropsMultiColor extends PropsIsDark {

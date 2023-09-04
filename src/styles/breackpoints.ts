@@ -3,5 +3,5 @@ export const screens = {
     desktop: 769,
     mobileStr: '320px',
     laptopStr: '769px',
-    desktopStr: '1024px'
+    desktopStr: '1700px'
 }

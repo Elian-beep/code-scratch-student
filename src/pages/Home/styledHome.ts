@@ -1,9 +1,24 @@
 import styled from 'styled-components';
+import { screens } from 'styles/breackpoints';
 import { color } from 'styles/colors';
-import { PropsIsDark } from 'interfaces/IIsDark';
 
-export const DivContainer = styled.div<PropsIsDark>`
-    min-height: 100vh;
-    background-color: ${( props ) => !props.isDark ? color.light.white : color.dark.black_dark};
-    color: ${( props ) => !props.isDark ? color.dark.black_dark : color.light.white};
+export const DivAccordion  = styled.div`
+    padding: 3em 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    @media (min-width: ${screens.laptopStr}) {
+        padding-left: 160px;
+        padding-right: 160px;
+    }
+
+    @media (min-width: ${screens.desktopStr}) {
+        padding-top: 5em;
+        padding-bottom: 5em;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 4em;
+    }
 `;

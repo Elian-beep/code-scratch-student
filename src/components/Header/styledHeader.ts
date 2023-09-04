@@ -7,9 +7,8 @@ export const HeaderContainer = styled.header`
     background-color: ${color.dark.black_mid};
     padding: 16px;
 
-    @media (min-width: ${screens.desktopStr}) {
-        padding-left: 160px;
-        padding-right: 160px;
+    @media (min-width: ${screens.laptopStr}) {
+        padding: 0 160px;
     }
 `;
 
@@ -26,7 +25,7 @@ export const DivRight = styled.div`
     align-items: center;
     gap: 16px;
 
-    @media (min-width: ${screens.desktopStr}) {
+    @media (min-width: ${screens.laptopStr}) {
         gap: 24px;
     }
 `;
@@ -37,4 +36,5 @@ export const ButtonProfile = styled.button`
     padding: none;
     margin: 0;
     outline: none;
+    cursor: pointer;
 `;

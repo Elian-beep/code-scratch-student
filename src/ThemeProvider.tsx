@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
+import { getAllCategories } from 'services/endpoints';
+import { TCategory } from 'types/TCategory';
 
 interface ThemeContextType {
   isDarkMode: boolean;

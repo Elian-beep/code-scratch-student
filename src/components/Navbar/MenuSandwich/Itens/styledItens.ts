@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { color } from 'styles/colors';
 import { PropsIsDark } from 'interfaces/IIsDark';
+import { screens } from 'styles/breackpoints';
 
 export const UlContainer = styled.ul<PropsIsDark>`
     background-color: ${ props => props.isDark ? color.light.white : color.dark.black_lght};

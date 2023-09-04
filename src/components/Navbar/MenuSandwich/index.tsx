@@ -3,7 +3,7 @@ import { color } from "styles/colors"
 import { LogoScratch } from "components/LogoScratch"
 import { ReactComponent as ProfileGirlSVG } from 'assets/profile/profile_girl.svg'
 import { ButtonSandwich, DivContainer, DivItensContainer } from "./styledMenuSandwich"
-import { MoreVert } from "@mui/icons-material"
+import { BorderAll, MoreVert } from "@mui/icons-material"
 import { Itens } from "./Itens"
 import { useState } from "react"
 import { useTheme } from "ThemeProvider"
