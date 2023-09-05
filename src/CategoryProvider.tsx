@@ -1,10 +1,11 @@
+import { useToken } from 'TokenProvider';
 import React, { createContext, useContext, useState } from 'react';
 import { getAllCategories } from 'services/endpoints';
 import { TCategory } from 'types/TCategory';
 
 interface CategoryContextType {
     categories: TCategory[];
-    addCategories: () => void;
+    addCategories: (token: string | null) => void;
 }
 
 interface Props {
@@ -15,11 +16,11 @@ const CategoryContext = createContext<CategoryContextType | undefined>(undefined
 
 export const CategoryProvider: React.FC<Props> = ({children}) => {
     const [categories, setCategories] = useState<TCategory[]>([]);
-    const storedToken = localStorage.getItem('token');
+    // const { token } = useToken();
   
-    const addCategories = async () => {
-      if(categories.length === 0){
-        const res = await getAllCategories(storedToken);
+    const addCategories = async (token: string | null) => {
+      if(categories.length === 0 && token){
+        const res = await getAllCategories(token);
         setCategories(res);
       }
     }

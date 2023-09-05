@@ -1,6 +1,6 @@
 import axios from "axios";
 import api from "./connApi";
-import { LOGIN_ENDPOINT, CLASSROONS_ENDPOINT, CATEGORIES_ENDPOINT } from "./students";
+import { LOGIN_ENDPOINT, CLASSROONS_ENDPOINT, CATEGORIES_ENDPOINT, CLASSROONS_CATEGORY_ENDPOINT, CLASSROONS_ID_ENDPOINT } from "./students";
 
 export const authStudent = async (user: string, password: string) => {
     try {
@@ -11,7 +11,7 @@ export const authStudent = async (user: string, password: string) => {
     }
 }
 
-export const getAllCategories = async (token: string | null) => {
+export const getAllCategories = async (token: string | null | undefined) => {
     if(!token) return;
     try{
         const response = await api.get(CATEGORIES_ENDPOINT, {
@@ -25,6 +25,19 @@ export const getAllCategories = async (token: string | null) => {
     }
 }
 
+export const getClassroomByCategory= async (token: string | null, id_category: string) => {
+    try {
+        const response = await api.get(`${CLASSROONS_CATEGORY_ENDPOINT}/${id_category}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response;
+    }catch(error){
+        console.log(`Erro na requisição GET ao buscar aulas por categorias: ${error}`);
+    }
+}
+
 export const getAllClassroom = async (token: string | null) => {
     try {
         const response = await api.get(CLASSROONS_ENDPOINT, {
@@ -35,5 +48,18 @@ export const getAllClassroom = async (token: string | null) => {
         return response.data;
     }catch(error){
         console.log(`Erro na requisição GET ao buscar aulas: ${error}`);
+    }
+}
+
+export const getClassroonById = async (token: string | null, id: string) => {
+    try{
+        const response = await api.get(`${CLASSROONS_ID_ENDPOINT}/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response;
+    }catch(error){
+        console.log(`Erro na requisição GET ao buscar aula por id: ${error}`);
     }
 }

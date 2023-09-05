@@ -5,17 +5,17 @@ import { PropsIsDark } from 'interfaces/IIsDark';
 import { screens } from 'styles/breackpoints';
 
 export const DivWrapper = styled.div<PropsIsDark>`
-    background-color: ${( props ) => !props.isDark ? color.light.white  : color.dark.black_lght};
     color: ${( props ) => !props.isDark ? color.dark.black_dark : color.light.white};
-    box-shadow: ${( props ) => !props.isDark ? ' 0px 0px 8px 0px rgba(0, 0, 0, 0.25)' : 'none'};
-
+    
     @media (min-width: ${screens.desktopStr}){
         width: 45%;
     }
+    
+    `;
 
-`;
-
-export const DivHeaderWrapper = styled.div`
+export const DivHeaderWrapper = styled.div<PropsIsDark>`
+    box-shadow: ${( props ) => !props.isDark ? ' 0px 0px 8px 0px rgba(0, 0, 0, 0.25)' : 'none'};
+    background-color: ${( props ) => !props.isDark ? color.light.white  : color.dark.black_lght};
     cursor: pointer;
     border-bottom: 2px solid ${color.pattern.orange};
     font-size: 12pt; 
@@ -38,8 +38,9 @@ export const SpanIconWrapper = styled.span<PropsIsOpen>`
 
 export const DivBodyWrapper = styled.div<PropsIsOpen>`
     overflow: hidden;
+    overflow-x: scroll;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1em;
     transition: max-height 0.1s ease-in-out;
     max-height: ${ props => props.isOpen ? "1000px" : "0"};

@@ -9,9 +9,11 @@ import { InputPass } from "components/Inputs/InputPass";
 import { ButtonSubmit } from "components/Inputs/styledInput";
 import { useNavigate } from "react-router-dom";
 import { authStudent } from "services/endpoints";
+import { useToken } from "TokenProvider";
 
 export const Login: React.FC = () => {
     const { isDarkMode } = useTheme();
+    const { addToken } = useToken();
     const navigate = useNavigate();
 
     const [inputEmail, setInputEmail] = useState('');
@@ -25,11 +27,12 @@ export const Login: React.FC = () => {
         
         try{
             const { token, student } = await authStudent(inputEmail, inputPassword);
-            localStorage.setItem('token', token);
-            localStorage.setItem('student', student.id);
             if(!token){
                 navigate("/l")
             }else{
+                localStorage.setItem('token', token);
+                localStorage.setItem('student', student.id);
+                addToken(token);
                 navigate("/");
             }
             

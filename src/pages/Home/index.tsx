@@ -7,18 +7,11 @@ import { DivAccordion } from "./styledHome";
 export const Home: React.FC = () => {
 
   const { isDarkMode } = useTheme();
-  const { categories, addCategories } = useCategory();
-
-  useEffect(() => {
-    addCategories();
-  }, []);
-
-  const res = categories;
-
+  const { categories } = useCategory();
 
   return (
     <DivAccordion>
-      {res.map(item => <Accordion description={item.description} id={item.id} />)}
+      {categories.map(item => <Accordion description={item.description} id={item.id} />)}
     </DivAccordion>
   );
 }

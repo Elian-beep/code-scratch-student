@@ -14,7 +14,7 @@ export const AppRouter = () => {
                     <Route path='/' element={<Layout />} >
                         <Route index element={<Home />} />
                         <Route path='/p' element={<Profile />} />
-                        <Route path='/c' element={<Classroom />} />
+                        <Route path='/c/:class_id' element={<Classroom />} />
                     </Route>
                     <Route path='/l' element={<Login />} />
                 </Routes>
