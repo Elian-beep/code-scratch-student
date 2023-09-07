@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getClassroonById } from "services/endpoints";
 import { TClassroom } from "types/TClassroom";
-import { DivClassr, DivContainer, DivInfo, H2Title, H3Title } from "./styledClassroom";
+import { DivClassr, DivContainer, DivInfo, DivOnlyCenter, H2Title, H3Title } from "./styledClassroom";
 import { useTheme } from "ThemeProvider";
 import { BoxMaterial } from "components/BoxMaterial";
+import { screens } from "styles/breackpoints";
 
 export const Classroom: React.FC = () => {
     const { class_id } = useParams();
@@ -27,23 +28,25 @@ export const Classroom: React.FC = () => {
     return (
         <DivContainer>
             <H2Title isDark={isDarkMode} >{clasroom?.title}</H2Title>
-            <DivClassr>
-                <iframe
-                    src={`https://www.youtube.com/embed/${clasroom?.link_video}`}
-                    width="100%"
-                    height="100%"
-                    allowFullScreen
-                    frameBorder={0}
-                ></iframe>
-            </DivClassr>
-            <DivInfo isDark={isDarkMode} >
-                Instrutor(a): {clasroom?.instructor.name}
-                <span>
-                </span>
-                <span>
-                    Módulo: {clasroom?.category.description}
-                </span>
-            </DivInfo>
+            <DivOnlyCenter>
+                <DivClassr>
+                    <iframe
+                        src={`https://www.youtube.com/embed/${clasroom?.link_video}`}
+                        width="100%"
+                        height="100%"
+                        allowFullScreen
+                        frameBorder={0}
+                    ></iframe>
+                </DivClassr>
+                <DivInfo isDark={isDarkMode} >
+                    <span>
+                        Instrutor(a): {clasroom?.instructor.name}
+                    </span>
+                    <span>
+                        Módulo: {clasroom?.category.description}
+                    </span>
+                </DivInfo>
+            </DivOnlyCenter>
             <H3Title isDark={isDarkMode} >Material de apoio: </H3Title>
             <BoxMaterial materialText={clasroom?.description} />
         </DivContainer>
