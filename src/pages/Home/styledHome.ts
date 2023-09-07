@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { screens } from 'styles/breackpoints';
-import { color } from 'styles/colors';
 
 export const DivAccordion  = styled.div`
     padding: 3em 16px;

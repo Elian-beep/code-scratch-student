@@ -16,7 +16,6 @@ export const Accordion: React.FC<TCategory> = ({ id, description }) => {
 
     useEffect(() => {
         getClassroons();
-        // const res = getClassroomByCategory()
     }, []);
 
     const getClassroons = async () => {
@@ -25,14 +24,6 @@ export const Accordion: React.FC<TCategory> = ({ id, description }) => {
                 setClassroons(response.data);
             }
             return;
-    }
-
-    const classroom: TClassroom = {
-        id: 'sdfklghjvsldjk',
-        category_id: id,
-        title: 'Titulo de teste',
-        description: 'Uma breve descrição sobre esta aula',
-        link_video: 'https://www.youtube.com/watch?v=dESfgB_UnZM&list=RD1oYJzb4aPhQ&index=5'
     }
 
     const toggleAccordion = () => {
@@ -53,11 +44,12 @@ export const Accordion: React.FC<TCategory> = ({ id, description }) => {
 
             <DivBodyWrapper isOpen={isOpen} >
                 {classroons.map(item => <Classroons
-                    category_id={item.category_id}
+                    category={item.category}
                     description={item.description}
                     id={item.id}
                     link_video={item.link_video}
                     title={item.title}
+                    instructor={item.instructor}
                 />)}
             </DivBodyWrapper>
 

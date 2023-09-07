@@ -1,4 +1,4 @@
-import axios from "axios";
+import { TClassroom } from "types/TClassroom";
 import api from "./connApi";
 import { LOGIN_ENDPOINT, CLASSROONS_ENDPOINT, CATEGORIES_ENDPOINT, CLASSROONS_CATEGORY_ENDPOINT, CLASSROONS_ID_ENDPOINT } from "./students";
 
@@ -32,6 +32,7 @@ export const getClassroomByCategory= async (token: string | null, id_category: s
                 Authorization: `Bearer ${token}`
             }
         });
+        
         return response;
     }catch(error){
         console.log(`Erro na requisição GET ao buscar aulas por categorias: ${error}`);
@@ -58,7 +59,7 @@ export const getClassroonById = async (token: string | null, id: string) => {
                 Authorization: `Bearer ${token}`
             }
         });
-        return response;
+        return response.data;
     }catch(error){
         console.log(`Erro na requisição GET ao buscar aula por id: ${error}`);
     }

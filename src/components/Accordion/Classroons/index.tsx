@@ -8,7 +8,7 @@ import { useToken } from "TokenProvider";
 import { YouTubePlayer } from "react-youtube";
 import { useNavigate } from "react-router-dom";
 
-export const Classroons: React.FC<TClassroom> = ({ id, title, description, link_video, category_id }) => {
+export const Classroons: React.FC<TClassroom> = ({ id, title, description, link_video, category, instructor }) => {
     const { isDarkMode } = useTheme();
     const navigate = useNavigate();
 
