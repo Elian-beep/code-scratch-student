@@ -7,23 +7,31 @@ import { Classroons } from "components/Accordion/Classroons";
 import { TClassroom } from "types/TClassroom";
 import { getClassroomByCategory } from "services/endpoints";
 import { useToken } from "TokenProvider";
+import { AxiosResponse } from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Accordion: React.FC<TCategory> = ({ id, description }) => {
     const { isDarkMode } = useTheme();
     const { token } = useToken();
     const [classroons, setClassroons] = useState<TClassroom[]>([]);
     const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        getClassroons();
-    }, []);
+    const [catchClassroons, setCatchClassroons] = useState(false);
+    const navigate = useNavigate();
 
     const getClassroons = async () => {
+        if(!catchClassroons){
             const response = await getClassroomByCategory(token, id);
-            if(response?.status == 200){
-                setClassroons(response.data);
+            if(response === 401){
+                localStorage.removeItem('token');
+                localStorage.removeItem('student');
+                navigate('/l');
+            }
+            if (response) {
+                setClassroons(response);
+                setCatchClassroons(true);
             }
             return;
+        }
     }
 
     const toggleAccordion = () => {
@@ -34,7 +42,7 @@ export const Accordion: React.FC<TCategory> = ({ id, description }) => {
         <DivWrapper isDark={isDarkMode} >
 
             <DivHeaderWrapper isDark={isDarkMode} onClick={toggleAccordion}>
-                <DivHeaderItens>
+                <DivHeaderItens onClick={getClassroons} >
                     <p>{description}</p>
                     <SpanIconWrapper isOpen={isOpen} isDark={isDarkMode} >
                         <ExpandMore />

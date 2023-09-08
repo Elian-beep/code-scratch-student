@@ -5,19 +5,22 @@ import { Profile } from './pages/Profile';
 import { Classroom } from './pages/Classroom';
 import './styles/global.css';
 import { Layout } from 'components/Layout';
+import { CategoryProvider } from 'CategoryProvider';
 
 export const AppRouter = () => {
     return (
         <main className='container'>
             <Router>
-                <Routes>
-                    <Route path='/' element={<Layout />} >
-                        <Route index element={<Home />} />
-                        <Route path='/p' element={<Profile />} />
-                        <Route path='/c/:class_id' element={<Classroom />} />
-                    </Route>
-                    <Route path='/l' element={<Login />} />
-                </Routes>
+                <CategoryProvider>
+                    <Routes>
+                        <Route path='/' element={<Layout />} >
+                            <Route index element={<Home />} />
+                            <Route path='/p' element={<Profile />} />
+                            <Route path='/c/:class_id' element={<Classroom />} />
+                        </Route>
+                        <Route path='/l' element={<Login />} />
+                    </Routes>
+                </CategoryProvider>
             </Router>
         </main>
     )

@@ -11,11 +11,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <TokenProvider>
-      <CategoryProvider>
+      {/* <CategoryProvider> */}
         <ThemeProvider>
           <AppRouter />
         </ThemeProvider>
-      </CategoryProvider>
+      {/* </CategoryProvider> */}
     </TokenProvider>
   </React.StrictMode>
 );

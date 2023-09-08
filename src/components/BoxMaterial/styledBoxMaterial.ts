@@ -50,4 +50,13 @@ export const ButtonShowMore = styled.button<Props>`
     font-weight: 600;
     font-size: 12pt;
     border-radius: 5px;
+    transition: all .4s ease-in;
+    cursor: pointer;
+
+    &:hover{
+        border: 2px solid ${color.pattern.orange};
+        background: ${color.light.white};
+        color: ${color.dark.black_dark};
+
+    }
 `;

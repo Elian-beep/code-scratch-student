@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getClassroonById } from "services/endpoints";
 import { TClassroom } from "types/TClassroom";
 import { DivClassr, DivContainer, DivInfo, DivOnlyCenter, H2Title, H3Title } from "./styledClassroom";
@@ -11,6 +11,7 @@ export const Classroom: React.FC = () => {
     const { class_id } = useParams();
     const { isDarkMode } = useTheme();
     const [clasroom, setClassroom] = useState<TClassroom>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -20,7 +21,12 @@ export const Classroom: React.FC = () => {
     const getClassroon = async (token: string) => {
         if (class_id !== undefined) {
             const response = await getClassroonById(token, class_id);
-
+            if(response === 401){
+                localStorage.removeItem('token');
+                localStorage.removeItem('student');
+                navigate('/l');
+                return;
+            }
             setClassroom(response);
         }
     }

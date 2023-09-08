@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getClassroonById } from "services/endpoints";
 import { TClassroom } from "types/TClassroom";
 import { useTheme } from "ThemeProvider";
 import { ButtonShowMore, DivBoxMaterial, DivContainer, DivOverlay, DivText } from "./styledBoxMaterial";

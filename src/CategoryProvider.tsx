@@ -1,5 +1,6 @@
 import { useToken } from 'TokenProvider';
 import React, { createContext, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getAllCategories } from 'services/endpoints';
 import { TCategory } from 'types/TCategory';
 
@@ -16,12 +17,23 @@ const CategoryContext = createContext<CategoryContextType | undefined>(undefined
 
 export const CategoryProvider: React.FC<Props> = ({children}) => {
     const [categories, setCategories] = useState<TCategory[]>([]);
+    const navigate = useNavigate();
     // const { token } = useToken();
   
     const addCategories = async (token: string | null) => {
-      if(categories.length === 0 && token){
-        const res = await getAllCategories(token);
-        setCategories(res);
+      try{
+        if(categories.length === 0 && token){
+          const res = await getAllCategories(token);
+          if(res === 401){
+            localStorage.removeItem('token');
+            localStorage.removeItem('student');
+            navigate('/l');
+          }
+          
+          setCategories(res);
+        }
+      }catch(error){
+        console.log('deu erro: ', error);
       }
     }
   
