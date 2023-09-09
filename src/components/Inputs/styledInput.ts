@@ -76,4 +76,12 @@ export const ButtonSubmit = styled.button`
     font-size: 12pt;
     font-weight: 600;
     cursor: pointer;
+    transition: all .4s ease-in;
+
+    &:hover{
+        background: ${color.light.white};
+        border: 2px solid ${color.pattern.orange};
+        color: ${color.dark.black_dark};
+
+    }
 `;

@@ -23,7 +23,7 @@ export const MenuSandwich: React.FC = () => {
                 <MoreVert fontSize="large" />
             </ButtonSandwich>
             <DivItensContainer isDark={isDarkMode} valueDisplay={showMenu}>
-                <Itens />
+                <Itens closeMenu={() => setShowMenu(!showMenu)} />
             </DivItensContainer>
         </DivContainer>
     )

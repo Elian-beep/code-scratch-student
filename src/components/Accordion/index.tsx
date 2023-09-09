@@ -7,32 +7,31 @@ import { Classroons } from "components/Accordion/Classroons";
 import { TClassroom } from "types/TClassroom";
 import { getClassroomByCategory } from "services/endpoints";
 import { useToken } from "TokenProvider";
+import { AxiosResponse } from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Accordion: React.FC<TCategory> = ({ id, description }) => {
     const { isDarkMode } = useTheme();
     const { token } = useToken();
     const [classroons, setClassroons] = useState<TClassroom[]>([]);
     const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        getClassroons();
-        // const res = getClassroomByCategory()
-    }, []);
+    const [catchClassroons, setCatchClassroons] = useState(false);
+    const navigate = useNavigate();
 
     const getClassroons = async () => {
+        if(!catchClassroons){
             const response = await getClassroomByCategory(token, id);
-            if(response?.status == 200){
-                setClassroons(response.data);
+            if(response === 401){
+                localStorage.removeItem('token');
+                localStorage.removeItem('student');
+                navigate('/l');
+            }
+            if (response) {
+                setClassroons(response);
+                setCatchClassroons(true);
             }
             return;
-    }
-
-    const classroom: TClassroom = {
-        id: 'sdfklghjvsldjk',
-        category_id: id,
-        title: 'Titulo de teste',
-        description: 'Uma breve descrição sobre esta aula',
-        link_video: 'https://www.youtube.com/watch?v=dESfgB_UnZM&list=RD1oYJzb4aPhQ&index=5'
+        }
     }
 
     const toggleAccordion = () => {
@@ -43,7 +42,7 @@ export const Accordion: React.FC<TCategory> = ({ id, description }) => {
         <DivWrapper isDark={isDarkMode} >
 
             <DivHeaderWrapper isDark={isDarkMode} onClick={toggleAccordion}>
-                <DivHeaderItens>
+                <DivHeaderItens onClick={getClassroons} >
                     <p>{description}</p>
                     <SpanIconWrapper isOpen={isOpen} isDark={isDarkMode} >
                         <ExpandMore />
@@ -53,11 +52,12 @@ export const Accordion: React.FC<TCategory> = ({ id, description }) => {
 
             <DivBodyWrapper isOpen={isOpen} >
                 {classroons.map(item => <Classroons
-                    category_id={item.category_id}
+                    category={item.category}
                     description={item.description}
                     id={item.id}
                     link_video={item.link_video}
                     title={item.title}
+                    instructor={item.instructor}
                 />)}
             </DivBodyWrapper>
 
