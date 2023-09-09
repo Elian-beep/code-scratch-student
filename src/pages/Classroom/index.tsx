@@ -24,6 +24,7 @@ export const Classroom: React.FC = () => {
             if(response === 401){
                 localStorage.removeItem('token');
                 localStorage.removeItem('student');
+                localStorage.removeItem('photo');
                 navigate('/l');
                 return;
             }

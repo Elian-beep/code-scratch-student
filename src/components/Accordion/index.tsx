@@ -24,6 +24,7 @@ export const Accordion: React.FC<TCategory> = ({ id, description }) => {
             if(response === 401){
                 localStorage.removeItem('token');
                 localStorage.removeItem('student');
+                localStorage.removeItem('photo');
                 navigate('/l');
             }
             if (response) {

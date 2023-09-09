@@ -38,3 +38,9 @@ export const ButtonProfile = styled.button`
     outline: none;
     cursor: pointer;
 `;
+
+export const ImgProfile = styled.img`
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+`;

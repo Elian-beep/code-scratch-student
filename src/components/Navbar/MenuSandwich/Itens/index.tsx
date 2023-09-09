@@ -17,6 +17,7 @@ export const Itens: React.FC<Props> = ({closeMenu}) => {
         if(route === 'l'){
             localStorage.removeItem('token');
             localStorage.removeItem('student');
+            localStorage.removeItem('photo');
         }
         navigate(`/${route}`);
         closeMenu();
