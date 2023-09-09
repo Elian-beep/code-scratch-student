@@ -46,7 +46,7 @@ export const ButtonShowMore = styled.button<Props>`
     padding: 16px;
     border: none;
     background: ${color.pattern.orange};
-    color: ${color.pattern.gray_light};
+    color: ${color.light.white};
     font-weight: 600;
     font-size: 12pt;
     border-radius: 5px;

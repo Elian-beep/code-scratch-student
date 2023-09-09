@@ -8,7 +8,7 @@ export const authStudent = async (user: string, password: string) => {
         const response = await api.post(LOGIN_ENDPOINT, { user, password });
         return response.data;
     } catch (error) {
-        throw new Error('Erro na requisição POST de login');
+        throw new Error('Falha na autenticação!');
     }
 }
 

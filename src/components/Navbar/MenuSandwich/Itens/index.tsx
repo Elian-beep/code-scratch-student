@@ -3,17 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { UlContainer, LiContent, ButtonItem } from "./styledItens";
 import { useTheme } from "ThemeProvider"
 
-export const Itens: React.FC = () => {
+interface Props{
+    closeMenu: () => void
+}
+
+export const Itens: React.FC<Props> = ({closeMenu}) => {
 
     const { isDarkMode } = useTheme();
 
     const navigate = useNavigate();
-
-    const logout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('student');
-        navigate('/l');
-    }
     
     const redirectPage = (route: string, id?: string) => {
         if(route === 'l'){
@@ -21,6 +19,7 @@ export const Itens: React.FC = () => {
             localStorage.removeItem('student');
         }
         navigate(`/${route}`);
+        closeMenu();
     }
 
     return (
