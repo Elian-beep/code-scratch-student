@@ -10,6 +10,7 @@ export const NavList: React.FC = () => {
         if(route === 'l'){
             localStorage.removeItem('token');
             localStorage.removeItem('student');
+            localStorage.removeItem('photo');
         }
         navigate(`/${route}`);
     }

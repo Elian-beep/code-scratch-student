@@ -34,6 +34,7 @@ export const Login: React.FC = () => {
             } else {
                 localStorage.setItem('token', token);
                 localStorage.setItem('student', student.id);
+                localStorage.setItem('photo', student.photo);
                 addToken(token);
                 navigate("/");
             }
