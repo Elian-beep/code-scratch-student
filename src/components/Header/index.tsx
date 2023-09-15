@@ -5,6 +5,7 @@ import { LogoScratch } from "components/LogoScratch"
 import { ReactComponent as ProfileGirlSVG } from 'assets/profile/profile_girl.svg'
 import { Navbar } from "components/Navbar"
 import { useNavigate } from "react-router-dom"
+import { PictureProfile } from "./PictureProfile"
 
 export const Header: React.FC = () => {
     const navigate = useNavigate();
@@ -13,8 +14,6 @@ export const Header: React.FC = () => {
     const redirectPage = (route: string, id?: string) => {
         navigate(`/${route}`);
     }
-
-    console.log(photoStudent);
 
     return (
         <HeaderContainer>
@@ -25,13 +24,7 @@ export const Header: React.FC = () => {
                     <DivRight>
                         <ButtonTheme colorDark={color.light.white} colorLight={color.pattern.orange} />
                         <ButtonProfile onClick={() => redirectPage('p')}  >
-                            {
-                                photoStudent
-                                ? 
-                                <ImgProfile src={photoStudent} alt="" />
-                                :
-                                <ProfileGirlSVG />
-                            }
+                            <PictureProfile />
                         </ButtonProfile>
                         <Navbar />
                     </DivRight>

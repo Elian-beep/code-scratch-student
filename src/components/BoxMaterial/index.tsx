@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { TClassroom } from "types/TClassroom";
 import { useTheme } from "ThemeProvider";
 import { ButtonShowMore, DivBoxMaterial, DivContainer, DivOverlay, DivText } from "./styledBoxMaterial";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
     materialText: string | undefined;
@@ -20,12 +21,9 @@ export const BoxMaterial: React.FC<Props> = ({ materialText }) => {
         <DivContainer>
             <DivBoxMaterial showFullText={showFullText} >
                 <DivText>
-                    {materialText}
-                    {materialText}
-                    {materialText}
-                    {materialText}
-                    {materialText}
-                    {materialText}
+                    <ReactMarkdown>
+                        {`${materialText}`}
+                    </ReactMarkdown>
                 </DivText>
                 <DivOverlay showFullText={showFullText} isDark={isDarkMode} />
             </DivBoxMaterial>
