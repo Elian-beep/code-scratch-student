@@ -6,8 +6,19 @@ import { Classroom } from './pages/Classroom';
 import './styles/global.css';
 import { Layout } from 'components/Layout';
 import { CategoryProvider } from 'CategoryProvider';
+import { useEffect } from 'react';
+import { wakeApi } from 'services/wakeApi';
 
 export const AppRouter = () => {
+
+    useEffect(() => {
+        wakeApi();
+        // const intervalTime = 30000;
+        const intervalTime = 14 * 60 * 1000;
+        const intervalId = setInterval(wakeApi, intervalTime);
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
         <main className='container'>
             <Router>
