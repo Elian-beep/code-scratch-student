@@ -43,7 +43,7 @@ export const DivBarContainer = styled.div`
 export const DivBarContent = styled.div<Props>`
     width: ${(props) => props.perAssisted ? `${props.perAssisted}%` : '0%'};
     height: 100%;
-    border-radius: 50px 0px 0px 50px;
+    border-radius: 50px;
     background: var(--Azul, #25AFF4);;
 `;
 

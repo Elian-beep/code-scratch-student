@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getClassroonById } from "services/endpoints";
+import { createRelationAssisted, getClassroonById } from "services/endpoints";
 import { TClassroom } from "types/TClassroom";
 import { DivClassr, DivContainer, DivInfo, DivOnlyCenter, H2Title, H3Title } from "./styledClassroom";
 import { useTheme } from "ThemeProvider";
 import { BoxMaterial } from "components/BoxMaterial";
-import { screens } from "styles/breackpoints";
 
 export const Classroom: React.FC = () => {
     const { class_id } = useParams();
@@ -15,10 +14,11 @@ export const Classroom: React.FC = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token')
-        if (token) getClassroon(token);
+        const idStudent = localStorage.getItem('student');
+        if (token && idStudent) getClassroon(token, idStudent);
     }, []);
 
-    const getClassroon = async (token: string) => {
+    const getClassroon = async (token: string, id_student: string) => {
         if (class_id !== undefined) {
             const response = await getClassroonById(token, class_id);
             if(response === 401){
@@ -28,6 +28,8 @@ export const Classroom: React.FC = () => {
                 navigate('/l');
                 return;
             }
+            const relation = await createRelationAssisted(token, id_student, class_id);
+            console.log(relation);
             setClassroom(response);
         }
     }
