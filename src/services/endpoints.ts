@@ -1,6 +1,6 @@
 import { TClassroom } from "types/TClassroom";
 import api from "./connApi";
-import { LOGIN_ENDPOINT, CLASSROONS_ENDPOINT, CATEGORIES_ENDPOINT, CLASSROONS_CATEGORY_ENDPOINT, CLASSROONS_ID_ENDPOINT } from "./students";
+import { LOGIN_ENDPOINT, CLASSROONS_ENDPOINT, CATEGORIES_ENDPOINT, CLASSROONS_CATEGORY_ENDPOINT, CLASSROONS_ID_ENDPOINT, STUDENT_CLASSROON_ENDPOINT } from "./students";
 import axios, { AxiosError } from "axios";
 
 export const authStudent = async (user: string, password: string) => {
@@ -61,19 +61,6 @@ export const getClassroomByCategory = async (token: string | null, id_category: 
     }
 }
 
-export const getAllClassroom = async (token: string | null) => {
-    try {
-        const response = await api.get(CLASSROONS_ENDPOINT, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-        return response.data;
-    } catch (error) {
-        console.log(`Erro na requisição GET ao buscar aulas: ${error}`);
-    }
-}
-
 export const getClassroonById = async (token: string | null, id: string) => {
     try {
         const response = await api.get(`${CLASSROONS_ID_ENDPOINT}/${id}`, {
@@ -94,5 +81,33 @@ export const getClassroonById = async (token: string | null, id: string) => {
         } else {
             console.log(`Erro na requisição GET ao buscar módulos: ${error}`);
         }
+    }
+}
+
+export const getAllClassroom = async (token: string | null) => {
+    try {
+        const response = await api.get(CLASSROONS_ENDPOINT, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(`Erro na requisição GET ao buscar aulas: ${error}`);
+    }
+}
+
+export const getListClassroonsAssisted =async (token: string | null, id_student: string | null) => {
+    try{
+        const response = await api.get(`${STUDENT_CLASSROON_ENDPOINT}/${id_student}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        const nAllClassrooms = await getAllClassroom(token);
+        const perAssisted = (response.data.nClassrooms / nAllClassrooms.length) * 100;
+        return perAssisted;
+    }catch(error){
+        console.log(`Erro na requisição GET ao buscar aulas: ${error}`);
     }
 }

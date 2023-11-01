@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { screens } from 'styles/breackpoints';
 
+export const DivProgressBar = styled.div`
+    width: auto;
+    padding: 2em 16px;
+
+    @media (min-width: ${screens.laptopStr}) {
+        padding-left: 160px;
+    }
+`;
+
 export const DivAccordion  = styled.div`
     padding: 3em 16px;
     display: flex;
