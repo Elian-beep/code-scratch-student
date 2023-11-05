@@ -85,6 +85,8 @@ export const getClassroonById = async (token: string | null, id: string) => {
 }
 
 export const getAllClassroom = async (token: string | null) => {
+    console.log(`getAllClassroom | token: ${token}`);
+    
     try {
         const response = await api.get(CLASSROONS_ENDPOINT, {
             headers: {
@@ -104,18 +106,14 @@ export const getListClassroonsAssisted =async (token: string | null, id_student:
                 Authorization: `Bearer ${token}`
             }
         });
-        const nAllClassrooms = await api.get(CLASSROONS_ENDPOINT, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
+        const nAllClassrooms = await getAllClassroom(token);
         const nAssisted = 
-            response.data.nClassrooms > nAllClassrooms.data.length
+            response.data.nClassrooms > nAllClassrooms.length
             ?
-                response.data.nClassrooms - (response.data.nClassrooms - nAllClassrooms.data.length) 
+                response.data.nClassrooms - (response.data.nClassrooms - nAllClassrooms.length) 
             :
                 response.data.nClassrooms;
-        const perAssisted = (nAssisted / nAllClassrooms.data.length) * 100;
+        const perAssisted = (nAssisted / nAllClassrooms.length) * 100;
         return perAssisted;
     }catch(error){
         console.log(`Erro na requisição GET ao buscar aulas: ${error}`);
