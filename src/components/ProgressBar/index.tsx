@@ -19,7 +19,7 @@ export const ProgressBar: React.FC = () => {
         if(idStudent){
             const response = await getListClassroonsAssisted(token, idStudent);
             setNAssisted(response);
-            console.log(`Resposta do numero de aulas assistidas: ${response}`);
+            // console.log(`Resposta do numero de aulas assistidas: ${response}`);
         }else{
             console.log(`Id do estudante nao econtrado`);
         }

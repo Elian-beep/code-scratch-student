@@ -106,15 +106,9 @@ export const getListClassroonsAssisted =async (token: string | null, id_student:
                 Authorization: `Bearer ${token}`
             }
         });
-        const nAllClassrooms = await getAllClassroom(token);
-        const nAssisted = 
-            response.data.nClassrooms > nAllClassrooms.length
-            ?
-                response.data.nClassrooms - (response.data.nClassrooms - nAllClassrooms.length) 
-            :
-                response.data.nClassrooms;
-        const perAssisted = (nAssisted / nAllClassrooms.length) * 100;
-        return perAssisted;
+        console.log(response.data);
+        
+        return response.data.percAssisted;
     }catch(error){
         console.log(`Erro na requisição GET ao buscar aulas: ${error}`);
     }
