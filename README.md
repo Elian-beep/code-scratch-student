@@ -44,7 +44,7 @@ A plataforma possui aulas gravadas baseadas nas aulas presenciais apresentadas d
 
 ## Stack utilizada
 
-| **Mobile Híbrido** |   |
+| **Frontend** |   |
 |--------------|---|
 | ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
 | ![vercel](https://img.shields.io/badge/vercel-000?style=for-the-badge&logo=vercel&logoColor=07405E) | ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) |
