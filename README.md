@@ -10,6 +10,16 @@ A plataforma possui aulas gravadas baseadas nas aulas presenciais apresentadas d
 
 - [@ElianBatista](https://www.linkedin.com/in/elian-batista/)
 - [@LindaSouza](https://www.linkedin.com/in/lindassouza/)
+## Screenshots
+
+![Desktop - Tela inicial](https://raw.githubusercontent.com/Elian-beep/assets_icons/main/Codescratch_screenshots/desktop%20home.png)
+
+![Desktop - Tela de aula](https://raw.githubusercontent.com/Elian-beep/assets_icons/main/Codescratch_screenshots/desktop%20class.png)
+
+![Mobile - Tela inicial](https://raw.githubusercontent.com/Elian-beep/assets_icons/main/Codescratch_screenshots/mobile%20home.png)
+
+![Mobile - Tela de aula](https://raw.githubusercontent.com/Elian-beep/assets_icons/main/Codescratch_screenshots/mobile%20class.png)
+
 ## Funcionalidades
 
 - Login com autenticação segura
