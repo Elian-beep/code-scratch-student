@@ -1,46 +1,73 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Code Scratch
 
-## Available Scripts
+Plataforma web de video aulas dedicada ao projeto Computação na Escola para Mulheres da UEA CESit.
 
-In the project directory, you can run:
+A plataforma possui aulas gravadas baseadas nas aulas presenciais apresentadas durante o projeto, com o intuito de auxiliar as alunas do projeto e fortificar o conteúdo ensinado.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Contribuidores
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [@ElianBatista](https://www.linkedin.com/in/elian-batista/)
+- [@LindaSouza](https://www.linkedin.com/in/lindassouza/)
+## Funcionalidades
 
-### `npm test`
+- Login com autenticação segura
+- Perfil de usuário
+- Aulas gravadas separadas por módulos
+- Contagem de progresso de aulas assistidas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Documentação de cores
 
-### `npm run build`
+| Cor               | Hexadecimal |
+| ----------------- | ----------- |
+| Cor Branco | ![#FAFAFA](https://via.placeholder.com/10/fafafa?text=+) #FAFAFA |
+| Cor Preto Escuro | ![#1E1E1E](https://via.placeholder.com/10/1E1E1E?text=+) #1e1e1e |
+| Cor Preto Médio | ![#222629](https://via.placeholder.com/10/222629?text=+) #222629 |
+| Cor Preto Claro | ![#282C2F](https://via.placeholder.com/10/282C2F?text=+) #282C2F |
+| Cor Preto | ![#0C0C0C](https://via.placeholder.com/10/0C0C0C?text=+) #0C0C0C |
+| Cor Laranja | ![#F9A41E](https://via.placeholder.com/10/F9A41E?text=+) #F9A41E |
+| Cor Vermelho | ![#F91E1E](https://via.placeholder.com/10/F91E1E?text=+) #F91E1E |
+| Cor Azul | ![#25AFF4](https://via.placeholder.com/10/25AFF4?text=+) #25AFF4 |
+| Cor Cinza Claro | ![#CECECE](https://via.placeholder.com/10/CECECE?text=+) #CECECE |
+| Cor Cinza Médio | ![#8A8A8A](https://via.placeholder.com/10/8A8A8A?text=+) #8A8A8A |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Stack utilizada
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| **Mobile Híbrido** |   |
+|--------------|---|
+| ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
+| ![vercel](https://img.shields.io/badge/vercel-000?style=for-the-badge&logo=vercel&logoColor=07405E) | ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Rodando localmente
 
-### `npm run eject`
+Clone o projeto
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+  git clone [link_do_clone_code-scratch-student]
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Entre no diretório do projeto
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+  cd code-scratch-student
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Instale as dependências
 
-## Learn More
+```bash
+  npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Inicie o servidor da aplicação
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  npm start
+```
+## Público alvo
+
+Esse projeto possui intuito em ser usado pelas seguintes entidades e motivos:
+
+- Estudantes e instrutores do projeto Computação na Escola para Mulheres
+- UEA CESIT
+
